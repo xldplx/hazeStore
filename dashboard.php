@@ -1,5 +1,6 @@
 <?php
 include "config.php";
+session_start();
 
 if(isset($_POST['btnlogout'])){
     session_unset();
@@ -29,14 +30,16 @@ if(isset($_POST['btnlogout'])){
         </div>
 
         <nav class="flex gap-[2rem] items-center text-[1.2rem]">
-            <a href="index.php">Home</a>
+            <a href="">Wellcome, <?= $_SESSION["username"] ?>!</a>
             <a href="store.php">Store</a>
             <a href="">Our Team</a>
             <div class="flex gap-[1rem]">
                 <div class="bg-white rounded-lg hover:scale-110 transition duration-300">
-                    <button name="btnlogout" class="border px-[2rem] py-1 bg-gradient-to-br from-pink-400 text-transparent to-pink-800 bg-clip-text rounded-lg">
-                        <h1>Log Out</h1>
-                    </button>
+                    <form action="dashboard.php" method="POST">
+                        <button name="btnlogout" class="border px-[2rem] py-1 bg-gradient-to-br from-pink-400 text-transparent to-pink-800 bg-clip-text rounded-lg">
+                            <h1>Log Out</h1>
+                        </button>
+                    </form>
                 </div>
 
             </div>

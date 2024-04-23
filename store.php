@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+if(isset($_POST['btnlogout'])){
+    session_unset();
+    session_destroy();
+    header("Location: index.php");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,21 +23,22 @@
     <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
 <body class="font-['VT323'] bg-gradient-to-br from-pink-400 to-pink-800 select-none">
-    <header class="flex justify-between text-white px-[2rem] py-[1rem]">
+<header class="flex justify-between text-white px-[2rem] py-[1rem]">
         <div class="text-[2rem] italic">
             <h1>HAZE.</h1>
         </div>
 
         <nav class="flex gap-[2rem] items-center text-[1.2rem]">
-            <a href="index.php">Home</a>
+            <a href="dashboard.php">Wellcome, <?= $_SESSION["username"] ?>!</a>
             <a href="store.php">Store</a>
             <a href="">Our Team</a>
             <div class="flex gap-[1rem]">
-                <button class="border px-[2rem] py-1 rounded-lg hover:scale-110 transition duration-300">Login</button>
                 <div class="bg-white rounded-lg hover:scale-110 transition duration-300">
-                    <button class="border px-[2rem] py-1 bg-gradient-to-br from-pink-400 text-transparent to-pink-800 bg-clip-text rounded-lg">
-                        <h1>Sign up</h1>
-                    </button>
+                    <form action="dashboard.php" method="POST">
+                        <button name="btnlogout" class="border px-[2rem] py-1 bg-gradient-to-br from-pink-400 text-transparent to-pink-800 bg-clip-text rounded-lg">
+                            <h1>Log Out</h1>
+                        </button>
+                    </form>
                 </div>
 
             </div>
