@@ -1,5 +1,6 @@
 <?php
 include "config.php";
+session_start()
 ?>
 
 <!DOCTYPE html>
@@ -26,20 +27,28 @@ include "config.php";
             <a href="index.php">Home</a>
             <a href="store.php">Store</a>
             <a href="">Our Team</a>
-            <div class="flex gap-[1rem]">
-                <a href="login.php">
-
-                    <button name="btnlogin" class="border px-[2rem] py-1 rounded-lg hover:scale-110 transition duration-300">Login</button>
-                </a>
+            <?php if (!isset($_SESSION['username'])) { ?>
+                <div class="flex gap-[1rem]">
+                    <a href="login.php">
+                        <button name="btnlogin" class="border px-[2rem] py-1 rounded-lg hover:scale-110 transition duration-300">Login</button>
+                    </a>
+                    <div class="bg-white rounded-lg hover:scale-110 transition duration-300">
+                        <a href="register.php">
+                            <button name="btnsignup" class="border px-[2rem] py-1 bg-gradient-to-br from-pink-400 text-transparent to-pink-800 bg-clip-text rounded-lg">
+                                <h1>Sign up</h1>
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            <?php } else { ?>
                 <div class="bg-white rounded-lg hover:scale-110 transition duration-300">
-                    <a href="signup.php">
-                        <button name="btnsignup" class="border px-[2rem] py-1 bg-gradient-to-br from-pink-400 text-transparent to-pink-800 bg-clip-text rounded-lg">
-                            <h1>Sign up</h1>
+                    <a href="logout.php">
+                        <button name="btnlogout" class="border px-[2rem] py-1 bg-gradient-to-br from-pink-400 text-transparent to-pink-800 bg-clip-text rounded-lg">
+                            <h1>Log out</h1>
                         </button>
                     </a>
                 </div>
-
-            </div>
+            <?php } ?>
         </nav>
     </header>
 
@@ -47,7 +56,7 @@ include "config.php";
         <div class="text-[4rem] font-bold drop-shadow-xl bg-white max-h-[6rem] px-[2rem] rounded-lg shadow-xl">
             <h1 class="bg-gradient-to-br from-pink-400 to-pink-800 bg-clip-text text-transparent">HAZE</h1>
         </div>
-        <h1 class="text-white text-[1.5rem]">The most cheapest game store you will ever see!!!!!!</h1>
+        <h1 class="text-white text-[1.5rem]">The most cheapest game store you will ever see!</h1>
     </section>
 
     <section class="bg-white py-[4rem] flex flex-col gap-[4rem] justify-center items-center">
@@ -66,10 +75,20 @@ include "config.php";
                 <h1>We're dedicated to providing you with an unforgettable gaming experience. Our platform goes beyond just booking. We offer helpful reviews, insightful recommendations, and a thriving community to connect with fellow gamers. Explore exciting challenges, participate in tournaments, and forge lasting friendships – all within our vibrant platform. Get ready to level up your gaming experience!</h1>
             </div>
         </div>
-        <a href="booking.php">
+        
+        <?php
+        if (isset($_SESSION['username'])) {
+            $redirectUrl = 'store.php';
+        } else {
+            $redirectUrl = 'login.php';
+        }
+        ?>
+
+        <a href="<?php echo $redirectUrl; ?>">
             <button name="btnbuy" class="bg-gradient-to-br from-pink-400 to-pink-800 px-[4rem] py-[1rem] rounded-lg text-white text-[1.5rem] shadow-lg hover:scale-110 transition duration-300">Book Now!</button>
         </a>
         
+
     </section>
 </body>
 </html>

@@ -30,19 +30,15 @@ if(isset($_POST['btnlogout'])){
         </div>
 
         <nav class="flex gap-[2rem] items-center text-[1.2rem]">
-            <a href="">Wellcome, <?= $_SESSION["username"] ?>!</a>
+            <a href="">Home</a>
             <a href="store.php">Store</a>
             <a href="">Our Team</a>
-            <div class="flex gap-[1rem]">
-                <div class="bg-white rounded-lg hover:scale-110 transition duration-300">
-                    <form action="dashboard.php" method="POST">
-                        <button name="btnlogout" class="border px-[2rem] py-1 bg-gradient-to-br from-pink-400 text-transparent to-pink-800 bg-clip-text rounded-lg">
-                            <h1>Log Out</h1>
-                        </button>
-                    </form>
-                </div>
+            <form action="dashboard.php" method="POST">
+                <button class="bg-white px-[2rem] py-1 rounded-lg shadow-lg hover:scale-110 transition duration-300">
+                    <h1 class="bg-gradient-to-br from-pink-400 to-pink-800 text-transparent bg-clip-text">Log out</h1>
+                </button>
+            </form>
 
-            </div>
         </nav>
     </header>
 
