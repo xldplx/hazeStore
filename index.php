@@ -47,7 +47,7 @@ include "config.php";
         <div class="text-[4rem] font-bold drop-shadow-xl bg-white max-h-[6rem] px-[2rem] rounded-lg shadow-xl">
             <h1 class="bg-gradient-to-br from-pink-400 to-pink-800 bg-clip-text text-transparent">HAZE</h1>
         </div>
-        <h1 class="text-white text-[1.5rem]">The most cheapest game store you will ever see!</h1>
+        <h1 class="text-white text-[1.5rem]">The most cheapest game store you will ever see!!!!!!</h1>
     </section>
 
     <section class="bg-white py-[4rem] flex flex-col gap-[4rem] justify-center items-center">
