@@ -18,7 +18,7 @@ if(isset($_POST['btnlogin'])){
         $_SESSION['email'] = $data['email'];
         $_SESSION['has_login'] = true;
         
-        header("Location: index.php");
+        header("Location: dashboard.php");
     }else{
         echo "Login failed";
     }

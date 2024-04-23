@@ -1,9 +1,21 @@
 <?php
 
 include "config.php";
-session_start();
 
+if(isset($_POST['btnsignup'])){
+    $username = $_POST['username'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
 
+    $sql = "INSERT INTO users (username, email, password) VALUES ('$username', '$email', '$password')";
+
+    if($conn->query($sql)){
+        header("Location: signsuccess.php");
+        // echo "<p class='flex justify-center items-center py-6'>Registration successful</p>";
+    }else{
+        echo "Registration failed";
+    }
+}
 
 ?>
 
@@ -24,7 +36,7 @@ session_start();
         <div class="w-96 p-6 shadow-lg rounded-md bg-white border ">
 
             <form class="mb-6 text-3xl block flex flex-col"
-            action="login.php" method="POST" >
+            action="signup.php" method="POST" >
 
                 
                 <div class="underline self-center text-pink-700">
