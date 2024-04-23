@@ -1,5 +1,6 @@
     <?php include "config.php";
 
+
     // Check if a genre is selected
     if (isset($_GET['genre'])) {
         $selectedGenre = $_GET['genre'];
@@ -40,7 +41,7 @@
                 <h1 class='text-green-400 font-bold text-[1.2rem]'>$<?php echo $price; ?></h1>
                 <div class='flex gap-4 justify-around'>
                     <?php if (isset($_SESSION["username"])) { ?>
-                        <a href="">
+                        <a href="store.php?action=add_to_cart&game_id=<?php echo $game_id; ?>">
                             <button class='border-2 px-[2rem] py-[0.5rem] text-transparent rounded-lg bg-gradient-to-br from-pink-400 to-pink-800 bg-clip-text'>Add to Cart</button>
                         </a>
                         <a href="">
@@ -64,4 +65,3 @@
 
     $conn->close();
     ?>
-    
